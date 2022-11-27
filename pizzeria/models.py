@@ -6,6 +6,9 @@ class Topping(models.Model):
     name = models.CharField(max_length=200)
     image = models.ImageField(upload_to='images/toppings')
 
+    def __str__(self):
+        return f"{self.name}"
+
 
 class PizzaBaseModel(models.Model):
     toppings = models.ManyToManyField(Topping)
@@ -16,6 +19,9 @@ class PizzaMenu(PizzaBaseModel):
     name = models.CharField(max_length=200)
     image = models.ImageField(upload_to='images/pizzas')
     price = models.IntegerField(default=8, validators=[MinValueValidator(0)])
+
+    def __str__(self):
+        return f"{self.name}"
 
 
 class PizzaCustom(PizzaBaseModel):
