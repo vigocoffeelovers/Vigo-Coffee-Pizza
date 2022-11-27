@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% bootstrap_messages %}
+
+    <title>VigoCoffee&Pizza</title>
+
+</head>
+<body class="m-0 border-0">
+
+    <nav class="px-3 navbar navbar-expand bg-light">
+        <a class="navbar-brand" href="#">Vigo Coffee & Pizza</a>
+        <div class="ms-auto">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Profile
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#">Log In</a></li>
+                        <li><a class="dropdown-item" href="#">Sing In</a></li>
+                        <li><a class="dropdown-item" href="#">Edit profile...</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="m-5">
+        {% block content %}
+
+        {% endblock content %}
+    </div>
+
+    <nav class="p-3 nav nav-pills fixed-bottom nav-justified  bg-light">
+        <a aria-current="{% if '/menu' in request.path %}page{% else %}false{% endif %}"
+           class="nav-link {% if '/menu' in request.path %}active{% endif %}" href="/menu">Menu</a>
+        <a class="nav-link {% if '/custom_pizza' in request.path %}active{% endif %}"
+           aria-current="{% if '/custom_pizza' in request.path %}page{% else %}false{% endif %}"
+           href="/custom_pizza">Custom Pizza</a>
+        <a class="nav-link {% if '/cart' in request.path %}active{% endif %}"
+           aria-current="{% if '/cart' in request.path %}page{% else %}false{% endif %}" href="/cart">Cart</a>
+    </nav>
+</body>
+</html>
