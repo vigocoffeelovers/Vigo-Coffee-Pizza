@@ -1,37 +1,32 @@
 from django.db import models
 from django.core.validators import MinValueValidator
+from django.contrib.auth.models import User
 
 
 class Topping(models.Model):
     name = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='images/toppings')
+    image = models.ImageField(upload_to='images/toppings', blank=True, null=True)
 
     def __str__(self):
         return f"{self.name}"
 
 
-class PizzaBaseModel(models.Model):
-    toppings = models.ManyToManyField(Topping)
-
-
-class PizzaMenu(PizzaBaseModel):
+class Pizza(models.Model):
     """This is a pizza from the menu, it has a customized image and a fixed price"""
+    toppings = models.ManyToManyField(Topping)
     name = models.CharField(max_length=200)
     image = models.ImageField(upload_to='images/pizzas')
     price = models.IntegerField(default=8, validators=[MinValueValidator(0)])
+    description = models.TextField()
 
     def __str__(self):
         return f"{self.name}"
 
 
-class PizzaCustom(PizzaBaseModel):
-    """This is a custom pizza created by the user, the price will be defined by the amount of toppings"""
-    # customer = models.ForeignKey(User)
-    price = models.IntegerField()
-
-    def save(self, *args, **kwargs):
-        self.price = len(self.toppings.all())
-
-
 class ShoppingCart(models.Model):
-    pizzas = models.ManyToManyField(PizzaBaseModel)
+    pizzas = models.ManyToManyField(Pizza)
+
+
+# class AppUser(User):
+#     money = models.FloatField()
+#     cart = ShoppingCart()

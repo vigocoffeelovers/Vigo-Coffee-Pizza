@@ -1,9 +1,7 @@
 from django.contrib import admin
 
-from pizzeria.models import PizzaMenu, Topping, ShoppingCart, PizzaCustom, PizzaBaseModel
+from pizzeria.models import Pizza, Topping, ShoppingCart
 
-admin.site.register(PizzaMenu)
+admin.site.register(Pizza)
 admin.site.register(Topping)
 admin.site.register(ShoppingCart)
-admin.site.register(PizzaCustom)
-admin.site.register(PizzaBaseModel)
