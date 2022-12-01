@@ -1,9 +1,12 @@
 from django.shortcuts import render
+from pizzeria.models import Pizza
 
 
 def menu_view(request):
     template_name = 'menu.html'
-    return render(request, template_name)
+    return render(request, template_name, {
+        "pizzas": Pizza.objects.all()
+    })
 
 
 def cart_view(request):
