@@ -16,4 +16,6 @@ def cart_view(request):
 
 def custom_pizza_view(request):
     template_name = 'custom_pizza.html'
-    return render(request, template_name)
+    return render(request, template_name, {
+        "pizza": request.GET.get('pizza_id', None)
+    })

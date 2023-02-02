@@ -3,26 +3,27 @@
 
 {% block content %}
     <div class="container-fluid">
-        <h1>Our Pizzas</h1>
         <div class="container-fluid">
             <div class="row justify-content-center">
 
                 {%  for pizza in pizzas %}
-                <div class="col-sm-12 col-md-9 col-lg-6 col-xl-3 col-xxl-3 col-xxxl-2 m-2">
-                    <div class="card text-center">
+                <div class="col-sm-12 col-md-9 col-lg-6 col-xl-3 col-xxl-2 col-xxxl-2 m-2">
+                    <div class="card text-center h-100">
                         <div class="card-header">
                             {{ pizza.name }}
                         </div>
                         <div class="card-body">
-                            <img src="{{ pizza.image.url }}" class="card-img-top" alt="Pizza"/>
+                            <img src="{{ pizza.image.url }}" class="card-img-top img-thumbnail" alt="Pizza"/>
                             <span class="p-2 rounded-pill bg-warning">{{ pizza.price }}€</span>
                             <p class="my-3 card-text back">{{ pizza.description }}</p>
+                        </div>
+                        <div class="card-footer">
                             <div class="row">
                                 <div class="col-6">
-                                    <a href="#" class="btn btn-primary">Personalizar</a>
+                                    <a class="btn btn-primary" href="{% url 'custom_pizza' %}?pizza_id={{ pizza.id }}">Customize</a>
                                 </div>
                                 <div class="col-6">
-                                    <a href="#" class="btn btn-primary">Al carro</a>
+                                    <button class="btn btn-primary">Add to Cart</button>
                                 </div>
                             </div>
                         </div>

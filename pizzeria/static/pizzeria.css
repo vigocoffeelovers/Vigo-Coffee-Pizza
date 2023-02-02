@@ -1,0 +1,10 @@
+.card-img-top {
+    width: 100%;
+    object-fit: cover;
+}
+
+.card-img-top:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}

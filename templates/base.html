@@ -8,6 +8,9 @@
     {% bootstrap_javascript %}
     {% bootstrap_messages %}
 
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'pizzeria.css' %}">
+
     <title>VigoCoffee&Pizza</title>
 
 </head>
@@ -39,11 +42,11 @@
     </div>
 
     <nav class="p-3 nav nav-pills fixed-bottom nav-justified  bg-light">
-        <a aria-current="{% if '/menu' in request.path %}page{% else %}false{% endif %}"
-           class="nav-link {% if '/menu' in request.path %}active{% endif %}" href="/menu">Menu</a>
         <a class="nav-link {% if '/custom_pizza' in request.path %}active{% endif %}"
            aria-current="{% if '/custom_pizza' in request.path %}page{% else %}false{% endif %}"
            href="/custom_pizza">Custom Pizza</a>
+        <a aria-current="{% if '/menu' in request.path %}page{% else %}false{% endif %}"
+           class="nav-link {% if '/menu' in request.path %}active{% endif %}" href="/menu">Menu</a>
         <a class="nav-link {% if '/cart' in request.path %}active{% endif %}"
            aria-current="{% if '/cart' in request.path %}page{% else %}false{% endif %}" href="/cart">Cart</a>
     </nav>

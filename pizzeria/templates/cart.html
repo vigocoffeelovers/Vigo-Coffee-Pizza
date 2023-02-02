@@ -2,7 +2,15 @@
 {% load bootstrap5 %}
 
 {% block content %}
-    <div class="container">
-      Cart
+    <div class="container-fluid">
+        {% for pizza in pizzas %}
+
+        {% empty %}
+            <div class="text-center">
+                <h3>The cart is empty</h3>
+                <p>Start by selecting some pizzas from the <a href="{%  url 'menu' %}">menu</a>,
+                    or make your own <a href="{%  url 'cart' %}">custom pizza</a></p>
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}
